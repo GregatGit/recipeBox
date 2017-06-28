@@ -1,29 +1,42 @@
-import React from 'react';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-import Divider from 'material-ui/Divider';
-import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
+import React from 'react'
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
+import FlatButton from 'material-ui/FlatButton'
+import Divider from 'material-ui/Divider'
+import Paper from 'material-ui/Paper'
+import TextField from 'material-ui/TextField'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
 
-const CardExampleExpandable = () => (
+const style = {
+  marginLeft: 20,
+};
+
+const Recipe = (props) => {
+  let myIngredients = props.ingredientsArr.map((ingredient) => {
+    return (
+      <div>
+        <TextField value={ingredient} style={style} underlineShow={false} />
+        <Divider />
+      </div>
+    )
+  })
+  return (
   <Card>
     <CardHeader
-      title="Without Avatar"
-      subtitle="Subtitle"
+      title={props.details}
       actAsExpander={true}
       showExpandableButton={true}
     />
-    <CardActions>
-      <FlatButton label="Action1" />
-      <FlatButton label="Action2" />
-    </CardActions>
     <CardText expandable={true}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+      <Paper zDepth={2}>
+        {myIngredients}
+      </Paper>
+      <CardActions>
+      <FlatButton label="Delete" />
+      <FlatButton label="Edit" />
+    </CardActions>
     </CardText>
   </Card>
-)
+)};
 
-export default CardExampleExpandable
+export default Recipe
