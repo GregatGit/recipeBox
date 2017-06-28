@@ -4,12 +4,11 @@ import FlatButton from 'material-ui/FlatButton'
 import Divider from 'material-ui/Divider'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
-import injectTapEventPlugin from 'react-tap-event-plugin'
-injectTapEventPlugin()
+
 
 const style = {
   marginLeft: 20,
-};
+}
 
 const Recipe = (props) => {
   let myIngredients = props.ingredientsArr.map((ingredient) => {
@@ -37,6 +36,6 @@ const Recipe = (props) => {
     </CardActions>
     </CardText>
   </Card>
-)};
+)}
 
 export default Recipe

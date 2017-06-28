@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import MainBoard from './components/mainboard'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
 
 class App extends React.Component {
   constructor (props) {
