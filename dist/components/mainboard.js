@@ -12,7 +12,8 @@ class MainBoard extends React.Component {
       console.log('recipes in local')
     }else{
       console.log('loading local storage')
-      localStorage.setItem('myRecipes', JSON.stringify(data))
+      //localStorage.setItem('myRecipes', JSON.stringify(data))
+      this.updateLocalStorage(data)
     }
     this.state = {
     }
@@ -25,14 +26,24 @@ class MainBoard extends React.Component {
       this.setState(recipe)
     })
   }
+  compareLocalStorage (str)  {
+    if (typeof str !== 'string'){
+      str = JSON.stringify(str)
+    }
+    return (str === localStorage.myRecipes)
+  }
+  updateLocalStorage (obj) {
+    localStorage.setItem('myRecipes', JSON.stringify(obj))
+  }
   render () {
     const titles = Object.keys(this.state)
-    const recipeCards = titles.map((name) => {
+    const recipeCards = titles.map((name, index) => {
       return (
-        <MuiThemeProvider>
+        <MuiThemeProvider key={index}>
           <Recipe 
             details={name.toUpperCase()}
-            ingredientsArr={this.state[name]}  
+            ingredientsArr={this.state[name]}
+            
           />          
         </MuiThemeProvider>
       )

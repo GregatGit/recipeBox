@@ -11,9 +11,9 @@ const style = {
 }
 
 const Recipe = (props) => {
-  let myIngredients = props.ingredientsArr.map((ingredient) => {
+  let myIngredients = props.ingredientsArr.map((ingredient, index) => {
     return (
-      <div>
+      <div key={index}>
         <TextField value={ingredient} style={style} underlineShow={false} />
         <Divider />
       </div>
