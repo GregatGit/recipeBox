@@ -18,6 +18,11 @@ class MainBoard extends React.Component {
     this.state = {
     }
   }
+
+  myTest = () => {
+    console.log('my test is working')
+  }
+
   componentDidMount () {
     console.log(data)
     let myData = JSON.parse(localStorage.myRecipes)
