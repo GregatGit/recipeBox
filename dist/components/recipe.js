@@ -19,10 +19,11 @@ const Recipe = (props) => {
       </div>
     )
   })
+  let recipeName = props.details
   return (
   <Card>
     <CardHeader
-      title={props.details}
+      title={recipeName.toUpperCase()}
       actAsExpander={true}
       showExpandableButton={true}
     />
@@ -31,8 +32,8 @@ const Recipe = (props) => {
         {myIngredients}
       </Paper>
       <CardActions>
-      <FlatButton label="Delete" />
-      <FlatButton label="Edit" />
+      <FlatButton label="Delete" onClick={props.delete}/>
+      <FlatButton label="Add" onClick={props.moreRecipes} />
     </CardActions>
     </CardText>
   </Card>

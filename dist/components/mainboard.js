@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import data from '../data/recipes.json'
 import Recipe from './recipe'
-
+console.log('the data = ', data)
+const theRecipes = []
 
 class MainBoard extends React.Component {
   constructor (props) {
@@ -14,31 +15,38 @@ class MainBoard extends React.Component {
       console.log('loading local storage')
       //localStorage.setItem('myRecipes', JSON.stringify(data))
       this.updateLocalStorage(data)
+      
     }
     this.state = {
     }
   }
-
-  myTest = () => {
-    console.log('my test is working')
-  }
-
+  
   componentDidMount () {
-    console.log(data)
+    console.log('CDM', data)
     let myData = JSON.parse(localStorage.myRecipes)
     console.log('my Data ', myData)
     myData.forEach((recipe) => {
       this.setState(recipe)
     })
   }
-  compareLocalStorage (str)  {
+  compareLocalStorage = (str) => {
     if (typeof str !== 'string'){
       str = JSON.stringify(str)
     }
     return (str === localStorage.myRecipes)
   }
-  updateLocalStorage (obj) {
+  updateLocalStorage = (obj) => {
     localStorage.setItem('myRecipes', JSON.stringify(obj))
+  }
+  editRecipe = (recipe) => {
+    this.setState(recipe)
+  }
+  addRecipe = (recipe) => {
+    //this.setState(recipe)
+    console.log(this.state.cake)
+  }
+  deleteRecipe = (recipe) => {
+    console.log(recipe)
   }
   render () {
     const titles = Object.keys(this.state)
@@ -46,14 +54,15 @@ class MainBoard extends React.Component {
       return (
         <MuiThemeProvider key={index}>
           <Recipe 
-            details={name.toUpperCase()}
+            details={name}
             ingredientsArr={this.state[name]}
-            
-          />          
+            moreRecipes={this.addRecipe}
+            delete={this.deleteRecipe}      
+          />
         </MuiThemeProvider>
       )
     })
-    console.log('rec',recipeCards)
+    //console.log('rec',recipeCards)
     return (
       <div>
         <h1>Recipes</h1>
