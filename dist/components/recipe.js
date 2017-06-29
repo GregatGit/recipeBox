@@ -32,7 +32,7 @@ const Recipe = (props) => {
         {myIngredients}
       </Paper>
       <CardActions>
-      <FlatButton label="Delete" onClick={props.delete}/>
+      <FlatButton label="Delete" onClick={props.deleteTheRecipe}/>
       <FlatButton label="Add" onClick={props.moreRecipes} />
     </CardActions>
     </CardText>

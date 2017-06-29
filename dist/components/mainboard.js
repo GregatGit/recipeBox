@@ -57,7 +57,7 @@ class MainBoard extends React.Component {
             details={name}
             ingredientsArr={this.state[name]}
             moreRecipes={this.addRecipe}
-            delete={this.deleteRecipe}      
+            deleteTheRecipe={this.deleteRecipe}      
           />
         </MuiThemeProvider>
       )
