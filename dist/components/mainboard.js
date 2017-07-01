@@ -45,8 +45,17 @@ class MainBoard extends React.Component {
     //this.setState(recipe)
     console.log(this.state.cake)
   }
-  deleteRecipe = (recipe) => {
-    console.log(recipe)
+  deleteRecipe = (recipeName) => {
+    console.log(recipeName)
+    // Object.keys(this.state).map((recipe, index) => {
+    //   console.log(recipe)
+    //   if (recipe !== recipeName){
+    //     return 
+    //   }
+    // })
+    const newState = this.state;
+    delete newState[recipeName];
+    this.setState(newState);
   }
   render () {
     const titles = Object.keys(this.state)
@@ -57,7 +66,7 @@ class MainBoard extends React.Component {
             details={name}
             ingredientsArr={this.state[name]}
             moreRecipes={this.addRecipe}
-            deleteTheRecipe={this.deleteRecipe}      
+            deleteTheRecipe={() => this.deleteRecipe(name)}      
           />
         </MuiThemeProvider>
       )
